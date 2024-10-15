@@ -40,14 +40,6 @@ queue_t* queue_create()
     return queue;
 }
 
-int queue_size(queue_t* queue)
-{
-    pthread_mutex_lock(&queue->lock);
-    int qsize = queue->size;
-    pthread_mutex_unlock(&queue->lock);
-    return qsize;
-}
-
 void queue_push(queue_t* queue, void* data)
 {
     node_t* node = queue_create_node(data);
